@@ -1,0 +1,90 @@
+mysql> use loanManagement;
+Database changed
+mysql>  CREATE TABLE customer (
+    ->          customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    ->          name VARCHAR(100) NOT NULL,
+    ->          email_address VARCHAR(100) UNIQUE NOT NULL,
+    ->          phone_number VARCHAR(15),
+    ->          address VARCHAR(255),
+    ->          credit_score INT
+    ->      );
+Query OK, 0 rows affected (0.16 sec)
+
+mysql>  CREATE TABLE loan (
+    ->         loan_id INT PRIMARY KEY AUTO_INCREMENT,
+    ->         customer_id INT,
+    ->       principal_amount DECIMAL(15, 2),
+    ->       interest_rate DECIMAL(5, 2),
+    ->       loan_term INT,
+    ->       loan_type VARCHAR(50),
+    ->       loan_status VARCHAR(50),
+    ->      FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+    ->     );
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> CREATE TABLE home_loan (
+    ->         loan_id INT PRIMARY KEY,
+    ->         property_address VARCHAR(255),
+    ->         property_value INT,
+    ->        FOREIGN KEY (loan_id) REFERENCES loan(loan_id)
+    ->      );
+Query OK, 0 rows affected (0.10 sec)
+
+mysql>
+mysql>  CREATE TABLE car_loan (
+    ->        loan_id INT PRIMARY KEY,
+    ->          car_model VARCHAR(100),
+    ->        car_value INT,
+    ->         FOREIGN KEY (loan_id) REFERENCES loan(loan_id)
+    ->      );
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> show tables;
++--------------------------+
+| Tables_in_loanmanagement |
++--------------------------+
+| car_loan                 |
+| customer                 |
+| home_loan                |
+| loan                     |
++--------------------------+
+4 rows in set (0.05 sec)
+
+
+mysql> select * from customer;
++-------------+--------------+------------------------+--------------+-----------------------------+--------------+
+| customer_id | name         | email_address          | phone_number | address                     | credit_score |
++-------------+--------------+------------------------+--------------+-----------------------------+--------------+
+|           1 | Rajesh Kumar | rajesh.kumar@email.com | 9876543210   | Bangalore, Karnataka, India |          720 |
+|           2 | Priya Sharma | priya.sharma@email.com | 9123456789   | Mumbai, Maharashtra, India  |          680 |
+|           3 | Amit Verma   | amit.verma@email.com   | 9988776655   | Delhi, India                |          750 |
++-------------+--------------+------------------------+--------------+-----------------------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from loan;
++---------+-------------+------------------+---------------+-----------+-----------+-------------+
+| loan_id | customer_id | principal_amount | interest_rate | loan_term | loan_type | loan_status |
++---------+-------------+------------------+---------------+-----------+-----------+-------------+
+|       2 |           1 |         35000.00 |          5.50 |        60 | Car       | Pending     |
+|       3 |           2 |         50000.00 |          7.00 |        72 | Home      | Approved    |
+|       4 |           3 |         15000.00 |          6.00 |        36 | Personal  | Pending     |
++---------+-------------+------------------+---------------+-----------+-----------+-------------+
+3 rows in set (0.00 sec)
+
+
+mysql> select * from car_loan;
++---------+----------------+-----------+
+| loan_id | car_model      | car_value |
++---------+----------------+-----------+
+|       2 | Toyota Corolla |   1500000 |
++---------+----------------+-----------+
+1 row in set (0.00 sec)
+
+
+mysql> select * from Home_loan;
++---------+--------------------------------------+----------------+
+| loan_id | property_address                     | property_value |
++---------+--------------------------------------+----------------+
+|       3 | 123 Main Street, Mumbai, Maharashtra |        5000000 |
++---------+--------------------------------------+----------------+
+1 row in set (0.00 sec)
