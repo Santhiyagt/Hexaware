@@ -1,4 +1,4 @@
-package com.hexaware.sis.dao;
+package com.hexaware.sis.util;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

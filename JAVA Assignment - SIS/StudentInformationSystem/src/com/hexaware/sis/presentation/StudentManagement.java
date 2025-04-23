@@ -1,4 +1,4 @@
-package com.hexaware.sis.main;
+package com.hexaware.sis.presentation;
 
 import com.hexaware.sis.dao.IStudentDao;
 import com.hexaware.sis.dao.StudentDaoImpl;
@@ -27,7 +27,7 @@ public class StudentManagement {
 			System.out.println("7. Exit");
 			System.out.print("Enter your choice: ");
 			int choice = sc.nextInt();
-			sc.nextLine(); 
+			sc.nextLine();
 
 			try {
 				switch (choice) {

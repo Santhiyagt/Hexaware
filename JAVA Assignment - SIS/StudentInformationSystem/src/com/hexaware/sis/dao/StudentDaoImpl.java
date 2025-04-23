@@ -2,6 +2,8 @@ package com.hexaware.sis.dao;
 
 import com.hexaware.sis.entity.Student;
 import com.hexaware.sis.exceptions.StudentNotFoundException;
+import com.hexaware.sis.util.DbUtil;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

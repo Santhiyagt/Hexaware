@@ -1,7 +1,8 @@
-package com.hexaware.sis.main;
+package com.hexaware.sis.presentation;
+
+import com.hexaware.sis.util.DbUtil;
 
 import java.sql.Connection;
-import com.hexaware.sis.dao.DbUtil;
 
 public class TestDb {
 	public static void main(String[] args) {

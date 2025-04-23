@@ -1,4 +1,4 @@
-package com.hexaware.sis.main;
+package com.hexaware.sis.presentation;
 
 import com.hexaware.sis.dao.EnrollmentDaoImpl;
 import com.hexaware.sis.dao.IEnrollmentDao;
